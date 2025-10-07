@@ -6,7 +6,7 @@ This project demonstrate how to containerize a Next.js application, build a dock
 ## Requirements:
 * node.js and npm 
 * docker 
-* minikube 
+* minikube <br />
 Optional: GHCR login for private Packages
 
 ## Setup and Download the application
