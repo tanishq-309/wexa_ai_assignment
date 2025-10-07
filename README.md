@@ -1,15 +1,16 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-## Readme.md
+# Readme.md
 ## Next.js Docker & minikube/kubernetes Deployment
 This project demonstrate how to containerize a Next.js application, build a docker image and push it to GitHub Container Registry (GHCR) via GitHub Actions Workflows and deploy it on minikube/kubernetes.
 
 ## Requirements:
-node.js and npm
-docker
-minikube
+node.js and npm__
+docker__
+minikube__
 Optional: GHCR login for private Packages
 
-## setup and download the application
+## Setup and Download the application
+```bash
 #clone repo
 git clone
 cd
@@ -17,12 +18,13 @@ cd
 npm install
 #run locally
 npm run dev
-
+```
 ## Run app via building the image locally
+```bash 
 docker build -t nextjs-app:latest .
 docker run -p 3000:3000 nextjs-app:latest
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## Deploy to minikube/kubernetes
 
 Start minikube
