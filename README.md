@@ -1,36 +1,60 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Readme.md
+## Next.js Docker & minikube/kubernetes Deployment
+This project demonstrate how to containerize a Next.js application, build a docker image and push it to GitHub Container Registry (GHCR) via GitHub Actions Workflows and deploy it on minikube/kubernetes.
 
-## Getting Started
+## Requirements:
+node.js and npm
+docker
+minikube
+Optional: GHCR login for private Packages
 
-First, run the development server:
-
-```bash
+## setup and download the application
+#clone repo
+git clone
+cd
+#install dependencies
+npm install
+#run locally
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
+## Run app via building the image locally
+docker build -t nextjs-app:latest .
+docker run -p 3000:3000 nextjs-app:latest
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to minikube/kubernetes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start minikube
+```bash
+start minikube
+```
+Apply deployment.yaml and service.yaml
+```bash
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+```
+Check status of pods
+```bash
+kubectl get pods
+```
+Check if the CLI shows status=running
+## Access the application
+Check the IP address on which minikube is running
+```bash
+minikube ip
+```
+Open your browser and paste the following
+```bash
+http://<ip-returned-by-minikubeip-command>:30080
+```
 
-## Learn More
+## Stop cluster
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+kubectl delete -f k8s/deployment.yaml
+kubectl delete -f k8s/service.yaml
+minikube stop
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
