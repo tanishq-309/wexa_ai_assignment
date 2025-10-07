@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nextjs
-        image: ghcr.io/tanishq309/wexa_ai_assignment:latest
+        image: ghcr.io/tanishq-309/wexa_ai_assignment:latest
         ports:
         - containerPort: 3000
         livenessProbe:
