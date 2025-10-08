@@ -5,9 +5,9 @@
 name: Deploy docker image to GHCR
 
 on:
-  # Runs on pull request targeting the default branch
   push:
-    branches: ["main"]
+    branches:
+    -  '**' #Runs on push to any branch
   pull_request:
     branches: ["main"]
       
